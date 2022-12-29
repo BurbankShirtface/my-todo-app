@@ -7,7 +7,9 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    setTodos(JSON.parse(localStorage.todos));
+    if (localStorage.todos > 0) {
+      setTodos(JSON.parse(localStorage.todos));
+    }
   }, []);
 
   useEffect(() => {
