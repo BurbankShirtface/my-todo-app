@@ -6,18 +6,18 @@ function App() {
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
 
-  // useEffect(() => {
-  //   if (todos.length > 0) {
-  //     localStorage.setItem("todos", JSON.stringify(todos));
-  //   } else {
-  //     localStorage.setItem("todos", JSON.stringify([]));
-  //   }
-  // }, [todos]);
-  // useEffect(() => {
-  //   if (localStorage.todos != null) {
-  //     setTodos(JSON.parse(localStorage.todos));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (localStorage.todos != null) {
+      setTodos(JSON.parse(localStorage.todos));
+    }
+  }, []);
+  useEffect(() => {
+    if (todos.length > 0) {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    } else {
+      localStorage.setItem("todos", JSON.stringify([]));
+    }
+  }, [todos]);
 
   return (
     <div className="App">
