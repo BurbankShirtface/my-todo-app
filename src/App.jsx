@@ -7,13 +7,17 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    if (localStorage.todos > 0) {
+    if (localStorage.todos != null) {
       setTodos(JSON.parse(localStorage.todos));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    if (todos.length > 0) {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    } else {
+      localStorage.setItem("todos", JSON.stringify([]));
+    }
   }, [todos]);
 
   return (
